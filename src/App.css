@@ -36,3 +36,70 @@
     transform: rotate(360deg);
   }
 }
+.main-page{
+
+  background-color: #5F5F5F;
+  padding-top: 40px;
+  
+}
+
+/* Add some styles for the cool buttons */
+.cool-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  padding-left: 20px;
+}
+
+.cool-button:hover {
+  background-color: #2980b9;
+}
+
+.header-text {
+  /* list-style: none; */
+  color: #fff;
+  font-size: 17px;
+  line-height: 1.5;
+  font-weight: 500;
+  text-decoration: none;
+}
+.banner-inner  {
+  font-size: 55px;
+  font-weight: 1200;
+  line-height: 1.3em;
+  color: #F8B200;
+  margin: 0;
+  letter-spacing: -0.03em;
+  box-sizing: border-box;
+  font-family: 'Manrope', sans-serif;
+}
+
+.banner-inner2  {
+  font-size: 30px;
+  font-weight: 1200;
+  color: #F8B200;
+  letter-spacing: 0.003em;
+  box-sizing: border-box;
+}
+
+.banner-inner3  {
+  padding-top: 20px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
+  display: inline-block;
+  letter-spacing: 0.05em;
+
+}
+@keyframes moveLeftToRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
