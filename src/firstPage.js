@@ -6,7 +6,14 @@ import logo2 from './icon02.png';
 import logo3 from './access-img45.png';
 
 
-
+function isDeviceWithScreen() {
+    return window.matchMedia('(any-pointer: fine)').matches;
+  }
+  
+  // Example usage
+  const isDeviceWithScreenResult = isDeviceWithScreen();
+  console.log('Is device with screen:', isDeviceWithScreenResult);
+  
 function App() {
     // Move the navigateToDiv function inside the component
     const navigateToDiv = (divId) => {
@@ -23,22 +30,22 @@ function App() {
                     <img src={logo} alt="Your Photo" style={{ maxWidth: '100%', height: 'auto' }} />
                 </div>
 
-                <div className="col-md-7 text-center" style={{ backgroundColor: '', display: 'flex', justifyContent: 'space-between', paddingTop: 20 }}>
+                <div className="col-md-7 text-center" style={{ backgroundColor: '', display: isDeviceWithScreenResult? 'flex':'', justifyContent: 'space-between', paddingTop: 20 }}>
                     <div className='header-text' onClick={() => navigateToDiv('section1')} style={{ cursor: 'pointer' }}>Demo Video</div>
                     <div className='header-text'>Features</div>
                     <div className='header-text'>Login</div>
                     <div className='header-text'>Blog</div>
                     <div className='header-text'>Support</div>
 
-                    <div style={{ display: 'flex', justifyContent: 'flex-start', marginRight: 40 }}>
-                        <button className="cool-button" style={{ width: 100, height: 50 }} >
+                    <div style={{ display: 'flex', justifyContent: 'center',alignItems:'center',marginTop:-30  }}>
+                        <button className="cool-button" style={{ width: 100, height: 50}} >
                             start
                         </button>
 
                     </div>
                 </div>
 
-                <div className='banner-inner h1' style={{ color: '#F8B200', paddingTop: 40 }}>Find New Clients and Close More Deals</div>
+                <div className='banner-inner h1' style={{ color: '#F8B200', paddingTop: 40 }}>To watch the demo video, click on the the demo video text</div>
                 <div className='banner-inner h1' style={{ color: '#fff' }}>with World’s First AI Powered Lead Finder</div>
                 <div className='banner-inner2' style={{ color: '#F8B200', display: 'flex', justifyContent: 'center' }}>
                     <div style={{ paddingRight: 20 }}>
@@ -80,6 +87,21 @@ function App() {
                 </div>
             </div>
 
+          
+            <div className='banner-inner h1'
+                style={{
+                    backgroundColor: '',
+                    display: 'inline-block',
+                    paddingTop: 100,
+                    animation: 'moveLeftToRight 10s linear infinite',
+                }}
+            >
+                Bu bölüm Ahmad Cbeili tarafından yapılmıştır.
+            </div>
+
+            <div style={{ backgroundColor: '', display: '', paddingTop: 100 }}>
+                <img src={logo3} alt="Your Photo" style={{ maxWidth: '100%', height: 'auto' }} />
+            </div>
             <div>
                 <section id="section1">
                     <div className="row d-flex" style={{ backgroundColor: '' }}>
@@ -102,22 +124,8 @@ function App() {
 
 
             </div>
-            <div className='banner-inner h1'
-                style={{
-                    backgroundColor: '',
-                    display: 'inline-block',
-                    paddingTop: 500,
-                    animation: 'moveLeftToRight 10s linear infinite',
-                }}
-            >
-                Bu bölüm Ahmad Cbeili tarafından yapılmıştır.
-            </div>
 
-            <div style={{ backgroundColor: '', display: '', paddingTop: 100 }}>
-                <img src={logo3} alt="Your Photo" style={{ maxWidth: '100%', height: 'auto' }} />
-            </div>
-
-            <div className='banner-inner h1' style={{ paddingTop: 20 }} > The end</div>
+            <div className='banner-inner h1' style={{ paddingTop: 400 }} > The end</div>
 
         </div>
 
