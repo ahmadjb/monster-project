@@ -25,7 +25,7 @@ function Navigation() {
                     animation: 'moveLeftToRight 10s linear infinite',
                 }}
             >
-                pelase choose your page
+                please choose your page
             </div>
       <div>
       

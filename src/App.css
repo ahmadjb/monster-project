@@ -103,3 +103,55 @@
     transform: translateX(-70%);
   }
 }
+
+.second-main-page{
+  background-color: "";
+  padding-top: 40px;
+  height: 100vh;
+}
+
+.header-text {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.options-list {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #f9f9f9;
+  padding: 10px;
+  border: 1px solid #ccc;
+  z-index: 1;
+  margin-bottom: 100px;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.header-text:hover .options-list {
+  display: block;
+}
+
+.your-class-name {
+  color: #023f87;
+  height: 100%;
+  text-align: right;
+  padding: 0 9px;
+  font-size: .9375rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+  
+  font-weight: 500 !important;
+}
+.cool-button2{
+  display: inline-block;
+  padding: 10px 50px;
+  background-color: #062d47;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 60px;
+  transition: background-color 0.3s ease;
+  padding-left: 20px;
+}
