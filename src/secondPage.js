@@ -99,40 +99,40 @@ function PageD() {
             <div id="map" style={{ width: '100%', height: '500px' }}></div>
 
             <div className="App second-main-page">
-            <div className="row" style={{ padding: 90 }}>
-                <div className="col-md-3">
-                    <div className="text-center" style={columnStyle}>
-                        Avrupa & BDT
-                        <br />
-                        Ülkeleri
+                <div className="row" style={{ padding: 90 }}>
+                    <div className="col-md-3">
+                        <div className="text-center" style={columnStyle}>
+                            Avrupa & BDT
+                            <br />
+                            Ülkeleri
+                        </div>
                     </div>
-                </div>
 
-                <div className="col-md-3">
-                    <div className="text-center" style={{ ...columnStyle, background: '#00FFFF' }}>
-                        Amerika
-                        <br />
-                        Ülkeleri
+                    <div className="col-md-3">
+                        <div className="text-center" style={{ ...columnStyle, background: '#00FFFF' }}>
+                            Amerika
+                            <br />
+                            Ülkeleri
+                        </div>
                     </div>
-                </div>
 
-                <div className="col-md-3">
-                    <div className="text-center" style={{ ...columnStyle, background: '#FF6347' }}>
-                        Afrika & Orta Doğu
-                        <br />
-                        Ülkeleri
+                    <div className="col-md-3">
+                        <div className="text-center" style={{ ...columnStyle, background: '#FF6347' }}>
+                            Afrika & Orta Doğu
+                            <br />
+                            Ülkeleri
+                        </div>
                     </div>
-                </div>
 
-                <div className="col-md-3">
-                    <div className="text-center" style={{ ...columnStyle, background: '#98FB98' }}>
-                        Asya Pasifik
-                        <br />
-                        Ülkeleri
+                    <div className="col-md-3">
+                        <div className="text-center" style={{ ...columnStyle, background: '#98FB98' }}>
+                            Asya Pasifik
+                            <br />
+                            Ülkeleri
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
         </div>
     );
