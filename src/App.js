@@ -106,7 +106,7 @@ function Navigation() {
 							<button style={{borderRadius:7}} onClick={() => handlestaticBtn("For more understanding of English, please select English language")}>For more understanding of English, please select English language</button>
 						</div>
 						<div className='col-md-12' style={{padding:5,borderRadius:20}}>
-							<button style={{borderRadius:7}} onClick={() => handlestaticBtn("Bir şeyler yazmayı deneyin")}>Bir şeyler yazmayı deneyin</button>
+							<button style={{borderRadius:7}} onClick={() => handlestaticBtn("Bir şeyler yazmayı deneyin, Bu butonlara da tıklayabilirsiniz")}>Bir şeyler yazmayı deneyin, bu butonlara da tıklayabilirsiniz</button>
 						</div>
 					</div>
 
