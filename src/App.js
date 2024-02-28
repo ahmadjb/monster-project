@@ -1,59 +1,180 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
 
 function Navigation() {
 
-  const convertTextToSpeech = async (text) => {
-    const apiKey = "SBYDJQTG"; // Replace with your actual API key
-    const apiUrl = `https://api.responsivevoice.org/responsivevoice?key=${apiKey}&src=${text}&hl=en_US`;
 
-    try {
-      const response = await axios.get(apiUrl);
-      
-      console.log('API Response:', response); // Log the API response
-      const audioUrl = response.data;
+	const [rate, setRate] = useState(1); // Initial speed rate
 
-      // Play the audio or do whatever you want with it
-      const audio = new Audio(audioUrl);
-      audio.play();
-    } catch (error) {
-      console.error('Error converting text to speech:', error);
-    }
-  };
+	const [voices, setVoices] = useState([]);
+	const [selectedVoice, setSelectedVoice] = useState(null);
+	const [textInput, setTextInput] = useState("");
+	const [Btn, setBtn] = useState(false);
 
-  const handleButtonClick = () => {
-    const textToConvert = "Hello, this is a sample text."; // Replace with your text
-    convertTextToSpeech(textToConvert);
-  };
 
-  return (
-    <Router>
-      <div className="App">
-        <header className="App-header">
-          <nav>
-            <div
-              className='banner-inner h1'
-              style={{
-                backgroundColor: '',
-                display: 'inline-block',
-                paddingTop: 0,
-                animation: 'moveLeftToRight 10s linear infinite',
-              }}
-            >
-              please choose your page
-            </div>
-          </nav>
-          <div>
-          <button onClick={handleButtonClick}>Convert to Speech</button>
-        </div>
-        </header>
 
-       
-      </div>
-    </Router>
-  );
+
+	useEffect(() => {
+		const handleVoicesChanged = () => {
+			const availableVoices = window.speechSynthesis.getVoices();
+			setVoices(availableVoices);
+
+			// Set a default voice (you can choose a specific one)
+			setSelectedVoice(availableVoices.find(voice => voice.lang === 'en-US'));
+		};
+
+		// Add event listener for the 'voiceschanged' event
+		window.speechSynthesis.addEventListener('voiceschanged', handleVoicesChanged);
+
+		// Initial fetch of voices
+		handleVoicesChanged();
+
+		// Clean up the event listener on component unmount
+		return () => {
+			window.speechSynthesis.removeEventListener('voiceschanged', handleVoicesChanged);
+		};
+	}, []);
+
+
+	const handleButtonClick = () => {
+
+		const textToConvert = textInput; // Replace with your text
+
+		const value = new SpeechSynthesisUtterance(textToConvert);
+
+		if (selectedVoice) {
+			value.voice = selectedVoice;
+		}
+
+		value.rate = rate; // Set the speed rate
+		window.speechSynthesis.speak(value);
+	};
+	const handlestaticBtn = (btn) => {
+
+		const textToConvert = btn; // Replace with your text
+
+		const value = new SpeechSynthesisUtterance(textToConvert);
+
+		if (selectedVoice) {
+			value.voice = selectedVoice;
+		}
+
+		value.rate = rate; // Set the speed rate
+		window.speechSynthesis.speak(value);
+	};
+
+	const handleRateChange = (newRate) => {
+		setRate(newRate);
+	};
+
+	const handleVoiceChange = (newVoice) => {
+		setSelectedVoice(newVoice);
+	};
+
+
+
+	return (
+		<Router>
+			<div className="App">
+				<header className="App-header">
+					<nav>
+						<div
+							className='banner-inner h1'
+							style={{
+								backgroundColor: '',
+								display: 'inline-block',
+								paddingTop: 0,
+								animation: 'moveLeftToRight 10s linear infinite',
+							}}
+						>
+							<div className='myname'>
+								Ahmad Cbeili tarafından geliştirilmekte
+							</div>
+						</div>
+					</nav>
+
+					<div className='' style={{width:'100%', fontSize:12}}>
+						<div className='col-md-12'>
+							<button onClick={() => handlestaticBtn("I am ahmad cbeılı")}>I am ahmad cbeılı</button>
+						</div>
+						<div className='col-md-12'>
+							<button onClick={() => handlestaticBtn("Türkçeyi daha iyi anlamak için lütfen türkçe dilini seçin")}>Türkçeyi daha iyi anlamak için lütfen türkçe dilini seçin</button>
+						</div>
+						<div className='col-md-12'>
+							<button onClick={() => handlestaticBtn("For more understanding of English, please select English language")}>For more understanding of English, please select English language</button>
+						</div>
+						<div className='col-md-12'>
+							<button onClick={() => handlestaticBtn("Bir şeyler yazmayı deneyin")}>Bir şeyler yazmayı deneyin</button>
+						</div>
+					</div>
+
+
+					<div style={{ paddingTop: 20 }}>
+						<label>
+							Enter Text:
+							<textarea
+								value={textInput}
+								onChange={(e) => setTextInput(e.target.value)}
+								style={{ width: '100%', height: '150px' }}
+								placeholder="Type your text here"
+							/>
+						</label>
+					</div>
+
+
+					<div style={{ backgroundColor: '', paddingBottom: 30, width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+						<div>Speed:</div>
+						<label>
+
+							<div>
+								<input
+									type="range"
+									min="0.1"
+									max="3"
+									step="0.1"
+									value={rate}
+									onChange={(e) => handleRateChange(parseFloat(e.target.value))}
+									style={{ width: '100%' }}
+								/>
+
+							</div>
+
+						</label>
+						<div>{rate.toFixed(1)}</div>
+					</div>
+					<div style={{ display: 'flex', justifyContent: "center", alignItems: "center", width: '100%' }}>
+						<label>
+							Voice:
+							<select
+								value={selectedVoice ? selectedVoice.name : ''}
+								onChange={(e) => {
+									const selectedVoiceName = e.target.value;
+									const newSelectedVoice = voices.find(voice => voice.name === selectedVoiceName);
+									handleVoiceChange(newSelectedVoice);
+								}}
+								style={{ width: '70%' }}
+							>
+								{voices.map((voice) => (
+									<option key={voice.name} value={voice.name}>
+										{voice.name}
+									</option>
+								))}
+							</select>
+						</label>
+					</div>
+
+					<div style={{ display: 'flex', justifyContent: "center", alignItems: "center", paddingTop: 50 }}>
+						<button
+							style={{ color: '', backgroundColor: 'greenyellow', borderRadius: 10 }}
+							onClick={handleButtonClick}>Convert to Speech</button>
+
+					</div>
+				</header>
+			</div>
+		</Router>
+	);
 }
 
 export default Navigation;
