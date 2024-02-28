@@ -159,12 +159,18 @@
 .myname{
 font-size: 50px;
 }
-
+.constantBtn{
+  font-size: 27px;
+}
 
 
   @media only screen and (max-width: 767px) {
     .myname{
       font-size: 22px;
       }
+      .constantBtn{
+        font-size: 12px;
+      }
+      
 
     }

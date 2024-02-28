@@ -95,37 +95,37 @@ function Navigation() {
 						</div>
 					</nav>
 
-					<div className='' style={{width:'100%', fontSize:12}}>
-						<div className='col-md-12'>
-							<button onClick={() => handlestaticBtn("I am ahmad cbeılı")}>I am ahmad cbeılı</button>
+					<div className='constantBtn' style={{ width: '100%' }}>
+						<div className='col-md-12' style={{padding:5,borderRadius:20}}>
+							<button style={{borderRadius:7}} onClick={() => handlestaticBtn("I am ahmad cbeılı")}>I am ahmad cbeılı</button>
 						</div>
-						<div className='col-md-12'>
-							<button onClick={() => handlestaticBtn("Türkçeyi daha iyi anlamak için lütfen türkçe dilini seçin")}>Türkçeyi daha iyi anlamak için lütfen türkçe dilini seçin</button>
+						<div className='col-md-12' style={{padding:5,borderRadius:20}}>
+							<button style={{borderRadius:7}} onClick={() => handlestaticBtn("Türkçeyi daha iyi anlamak için lütfen türkçe dilini seçin")}>Türkçeyi daha iyi anlamak için lütfen türkçe dilini seçin</button>
 						</div>
-						<div className='col-md-12'>
-							<button onClick={() => handlestaticBtn("For more understanding of English, please select English language")}>For more understanding of English, please select English language</button>
+						<div className='col-md-12' style={{padding:5,borderRadius:20}}>
+							<button style={{borderRadius:7}} onClick={() => handlestaticBtn("For more understanding of English, please select English language")}>For more understanding of English, please select English language</button>
 						</div>
-						<div className='col-md-12'>
-							<button onClick={() => handlestaticBtn("Bir şeyler yazmayı deneyin")}>Bir şeyler yazmayı deneyin</button>
+						<div className='col-md-12' style={{padding:5,borderRadius:20}}>
+							<button style={{borderRadius:7}} onClick={() => handlestaticBtn("Bir şeyler yazmayı deneyin")}>Bir şeyler yazmayı deneyin</button>
 						</div>
 					</div>
 
 
 					<div style={{ paddingTop: 20 }}>
 						<label>
-							Enter Text:
+							Metni Girin:
 							<textarea
 								value={textInput}
 								onChange={(e) => setTextInput(e.target.value)}
 								style={{ width: '100%', height: '150px' }}
-								placeholder="Type your text here"
+								placeholder="Metninizi buraya yazın"
 							/>
 						</label>
 					</div>
 
 
 					<div style={{ backgroundColor: '', paddingBottom: 30, width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-						<div>Speed:</div>
+						<div style={{ paddingRight: 15 }}>Hız:</div>
 						<label>
 
 							<div>
@@ -144,9 +144,10 @@ function Navigation() {
 						</label>
 						<div>{rate.toFixed(1)}</div>
 					</div>
-					<div style={{ display: 'flex', justifyContent: "center", alignItems: "center", width: '100%' }}>
+					<div style={{ display: 'flex', justifyContent: "center", alignItems: "center", width: '100%' ,paddingLeft:10}}>
+						<div style={{ marginRight: -20 }}> Dil:</div>
+						<div>
 						<label>
-							Voice:
 							<select
 								value={selectedVoice ? selectedVoice.name : ''}
 								onChange={(e) => {
@@ -154,7 +155,7 @@ function Navigation() {
 									const newSelectedVoice = voices.find(voice => voice.name === selectedVoiceName);
 									handleVoiceChange(newSelectedVoice);
 								}}
-								style={{ width: '70%' }}
+								style={{ width: '85%' }}
 							>
 								{voices.map((voice) => (
 									<option key={voice.name} value={voice.name}>
@@ -163,12 +164,13 @@ function Navigation() {
 								))}
 							</select>
 						</label>
+						</div>
 					</div>
 
 					<div style={{ display: 'flex', justifyContent: "center", alignItems: "center", paddingTop: 50 }}>
 						<button
 							style={{ color: '', backgroundColor: 'greenyellow', borderRadius: 10 }}
-							onClick={handleButtonClick}>Convert to Speech</button>
+							onClick={handleButtonClick}>Konuşmaya Dönüştür</button>
 
 					</div>
 				</header>
