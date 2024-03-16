@@ -117,7 +117,7 @@ function Navigation() {
 							<textarea
 								value={textInput}
 								onChange={(e) => setTextInput(e.target.value)}
-								style={{ width: '100%', height: '150px' }}
+								style={{ width: '100%', height: '150px',resize: 'none' }}
 								placeholder="Metninizi buraya yazın"
 							/>
 						</label>
