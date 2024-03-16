@@ -16,7 +16,7 @@
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
-  display: flex;
+
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -174,3 +174,35 @@ font-size: 50px;
       
 
     }
+    .v-line {
+      border-left: 3px solid rgb(255, 255, 255);
+      padding-left: 10px;
+      flex: 1;
+    }
+    
+    @media (max-width: 768px) {
+      .v-line {
+        border-left: 0px solid black;
+        padding-left: 10px;
+        flex: 1;
+      }
+    }
+
+    .h-line {
+      border-bottom: 0px solid rgb(255, 255, 255);
+      padding-bottom:20px ;
+      
+      
+    }
+
+    @media (max-width: 768px) {
+      .h-line {
+        border-bottom: 3px solid rgb(255, 255, 255);
+        padding-bottom:20px ;
+      }
+  
+    }
+
+
+
+    
