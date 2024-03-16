@@ -4,9 +4,6 @@ import axios from 'axios';
 import ReactAudioPlayer from 'react-audio-player';
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
 
 import './App.css';
 
@@ -66,30 +63,26 @@ function TextToSpeechComponent() {
                 'accept': 'application/json'
             }
         })
-        .then(response => response.json())
-        .then(response => {
-            setStatus(response.status);
-            console.log(response);
-            if (response.status === 'COMPLETED') {
-                // Process completed successfully
-                console.log('Process completed successfully');
-                clearInterval(intervalId); // Stop checking the status
-                setSpinner(false);
-                setOudio(true);
-                fetchResultUrls(response.result.output);
-                setVoiceUrl(response.result.output);
-                toast.success('Process completed successfully');
-            } else if (response.status === 'FAILED') {
-                // Process failed
-                console.log('Process failed');
-                toast.error('Process failed');
-            } else {
-                // Process still in progress or queued
-                console.log('Process still in progress or queued');
-                toast.info('Process still in progress or queued');
-            }
-        })
-        
+            .then(response => response.json())
+            .then(response => {
+                setStatus(response.status);
+                console.log(response);
+                if (response.status === 'COMPLETED') {
+                    // Process completed successfully
+                    console.log('Process completed successfully');
+                    clearInterval(intervalId); // Stop checking the status
+                    setSpinner(false);
+                    setOudio(true);
+                    fetchResultUrls(response.result.output);
+                    setVoiceUrl(response.result.output);
+                } else if (response.status === 'FAILED') {
+                    // Process failed
+                    console.log('Process failed');
+                } else {
+                    // Process still in progress or queued
+                    console.log('Process still in progress or queued');
+                }
+            })
             .catch(err => console.error(err));
     };
 
