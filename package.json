@@ -12,9 +12,14 @@
     "antd": "^5.12.5",
     "aws-sdk": "^2.1583.0",
     "axios": "^1.6.8",
+    "bcrypt": "^5.1.1",
     "bootstrap": "^5.3.2",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
     "ibm-watson": "^8.0.0",
     "leaflet": "^1.9.4",
+    "mongodb": "^6.5.0",
+    "mongoose": "^8.2.4",
     "playht": "^0.9.7",
     "qrcode.react": "^3.1.0",
     "react": "^18.2.0",
@@ -25,10 +30,13 @@
     "react-scripts": "5.0.1",
     "react-speech-kit": "^3.0.1",
     "react-toastify": "^10.0.5",
+    "timers-browserify": "^2.0.12",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start:client": "react-scripts start",
+    "start:server": "node server.js",
+    "start": "concurrently \"npm run start:client\" \"npm run start:server\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -50,5 +58,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   }
 }

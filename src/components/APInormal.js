@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import axios from 'axios';
 import ReactAudioPlayer from 'react-audio-player';
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 
 
-import './App.css';
+
+import '../App.css';
 
 import Monster from "./APImonster";
 
@@ -79,12 +79,14 @@ function TextToSpeechComponent() {
     };
 
 
-
-
+   
     return (
 
         <div className="App">
+           
             <header className="App-header">
+
+
 
                 <div>
                     <div>

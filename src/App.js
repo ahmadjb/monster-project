@@ -4,12 +4,13 @@ import axios from 'axios';
 import ReactAudioPlayer from 'react-audio-player';
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
+import SignInPage from './pages/SignInPage';
 
 
 import './App.css';
 
-import Monster from "./APImonster";
-import Nconverter from "./APInormal"
+import Monster from "./components/APImonster";
+import Nconverter from "./components/APInormal"
 
 function TextToSpeechComponent() {
 
@@ -35,14 +36,19 @@ function TextToSpeechComponent() {
                         </div>
                     </nav>
 
-                    <div className='row'>
-                        <div className='col-md-6 col-12 h-line'>
-                           <Monster />
-                        </div>
-                        <div className='col-md-6 col-12 v-line' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
-                            <Nconverter />
-                        </div>
-                    </div>
+                    <Routes>
+                        <Route path="/signin" element={<SignInPage />} />
+                        <Route path="/" element={
+                            <div className='row'>
+                                <div className='col-md-6 col-12 h-line'>
+                                    <Monster />
+                                </div>
+                                <div className='col-md-6 col-12 v-line' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                    <Nconverter />
+                                </div>
+                            </div>
+                        } />
+                    </Routes>
 
                 </header>
             </div>
