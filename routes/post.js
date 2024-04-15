@@ -4,6 +4,7 @@ const User = require('../models/settingUp');
 
 const Post = require('../models/post');
 const AWS = require('aws-sdk');
+require('dotenv').config();
  
 // Add the AWS configuration with your credentials here
 AWS.config.update({
