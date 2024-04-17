@@ -4,6 +4,7 @@ import axios from 'axios';
 import ReactAudioPlayer from 'react-audio-player';
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
+import SignUpPage from './pages/SignUpPage';
 import SignInPage from './pages/SignInPage';
 
 
@@ -37,6 +38,7 @@ function TextToSpeechComponent() {
                     </nav>
 
                     <Routes>
+                        <Route path="/signup" element={<SignUpPage />} />
                         <Route path="/signin" element={<SignInPage />} />
                         <Route path="/" element={
                             <div className='row'>

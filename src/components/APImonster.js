@@ -48,6 +48,8 @@ function TextToSpeechComponent() {
 
 
 
+
+
     let intervalId; // Declaring intervalId outside the useEffect hook
 
 
@@ -58,29 +60,36 @@ function TextToSpeechComponent() {
         }
     }, [statusUrl]);
 
+
     const fetchData = () => {
-        setSpinner(true);
+        const token = localStorage.getItem('authToken');
+        if (token === "true") {
 
-        const form = new FormData();
-        form.append('voice_clone', 'false');
-        form.append('prompt', monsterapi);
+            setSpinner(true);
+            const form = new FormData();
+            form.append('voice_clone', 'false');
+            form.append('prompt', monsterapi);
 
-        const options = {
-            method: 'POST',
-            headers: {
-                accept: 'application/json',
-                authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6IjZjYzkxNWQwODYxNmMwYTg1OGU2Y2Q5YTQ3NjJjNjBiIiwiY3JlYXRlZF9hdCI6IjIwMjQtMDItMDdUMTg6MDM6NTYuMTIzMjI0In0.HdEuxhoVbK40qvpRoGicCs0VX42qr4iKdpjKzPPGBMQ'
-            },
-            body: form
-        };
+            const options = {
+                method: 'POST',
+                headers: {
+                    accept: 'application/json',
+                    authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6IjZjYzkxNWQwODYxNmMwYTg1OGU2Y2Q5YTQ3NjJjNjBiIiwiY3JlYXRlZF9hdCI6IjIwMjQtMDItMDdUMTg6MDM6NTYuMTIzMjI0In0.HdEuxhoVbK40qvpRoGicCs0VX42qr4iKdpjKzPPGBMQ'
+                },
+                body: form
+            };
 
-        fetch('https://api.monsterapi.ai/v1/generate/sunoai-bark', options)
-            .then(response => response.json())
-            .then(response => {
-                setProcessId(response.process_id);
-                setStatusUrl(response.status_url);
-            })
-            .catch(err => console.error(err));
+            fetch('https://api.monsterapi.ai/v1/generate/sunoai-bark', options)
+                .then(response => response.json())
+                .then(response => {
+                    setProcessId(response.process_id);
+                    setStatusUrl(response.status_url);
+                })
+                .catch(err => console.error(err));
+        } else {
+            alert("Please sign in");
+            console.log("token is:", token);
+        }
     };
 
     const checkStatus = () => {
@@ -332,6 +341,9 @@ function TextToSpeechComponent() {
     const handleSignInClick = () => {
         navigate('/signin');
     };
+    const handleSignUpClick = () => {
+        navigate('/signup');
+    };
 
 
     return (
@@ -340,8 +352,12 @@ function TextToSpeechComponent() {
 
             <div style={{ display: 'flex', justifyContent: 'flex-end', backgroundColor: '' }}>
 
-                <div style={{ padding: 20 }}>
+                <div style={{ padding: 10 }}>
                     <button style={{ backgroundColor: 'greenyellow' }} onClick={handleSignInClick}>Sign In</button>
+                </div>
+
+                <div style={{ padding: 10 }}>
+                    <button style={{ backgroundColor: 'greenyellow' }} onClick={handleSignUpClick}>Sign up</button>
                 </div>
             </div>
             <header className="App-header">
