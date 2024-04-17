@@ -25,6 +25,8 @@ const SignInForm = () => {
             // Handle successful sign-in (e.g., redirect to dashboard)
         } catch (error) {
             console.error(error);
+            localStorage.setItem('authToken', false);
+            
             // Handle sign-in error
         }
     };
